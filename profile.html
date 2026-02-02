@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Booking</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bungee&family=Itim&family=Nata+Sans:wght@100..900&family=Playwrite+DE+LA:wght@100..400&family=Quicksand:wght@300..700&family=Sacramento&family=Schoolbell&family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#booking">Booking Room</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="content">
+        <article class="card">
+          <h2>Daftar Booking</h2>
+
+          <div class="card-booking-room">
+            <div class="card-room">
+              <ul>
+                <li v-for="(booking, index) in enrichedBookings" :key="booking.id">
+                  <strong>{{ booking.roomName }}</strong> ({{ booking.location }}) <br>
+                  {{ booking.date }} | {{ booking.startTime }} - {{ booking.endTime }} <br>
+                  <em>By: {{ booking.userName }}</em> <br>
+                  Status: <span :class="booking.status.toLowerCase()">{{ booking.status }}</span>
+                  <br>
+                  <button @click="cancelBooking(booking)">Cancel</button>
+                </li>
+              </ul>
+
+              <p v-if="enrichedBookings.length === 0">Belum ada booking.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="profile.js"></script>
+  </div>
+</body>
+</html>

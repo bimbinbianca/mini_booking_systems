@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Booking Room</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Header / Navbar -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#booking">Booking Room</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="content">
+        <article id="booking" class="card">
+          <h2>Booking Room</h2>
+
+          <div class="card-booking-room">
+            <!-- Looping Room -->
+            <div class="card-room" v-for="room in rooms" :key="room.id">
+              
+              <!-- Gambar Ruangan -->
+              <div class="pict-1">
+                <figure>
+                  <img src="/images/pic_meeting_room.jpg" alt="vip-room" width="300px">
+                </figure>
+              </div>
+              
+              <!-- Informasi -->
+              <div class="information-1">
+                <figcaption>{{ room.name }}</figcaption>
+                <p>
+                  Kapasitas: {{ room.capacity }} seat <br>
+                  Lokasi: {{ room.location }}
+                </p>
+              </div>
+
+              <!-- Status -->
+              <div class="status-box" :class="room.status.toLowerCase()">
+                {{ room.status }}
+              </div>
+
+              <!-- Tombol Booking -->
+              <div class="book-btn">
+                <button @click="selectRoom(room)" :disabled="room.status !== 'Available'">
+                  Book
+                </button>
+              </div>
+
+              <!-- Form Booking -->
+              <div v-if="activeRoom && activeRoom.id === room.id" class="booking-form">
+                <label>Nama:</label>
+                <input type="text" v-model="userName" />
+
+                <label>Tanggal:</label>
+                <input type="date" v-model="bookingDate" />
+
+                <label>Waktu Mulai:</label>
+                <input type="time" v-model="startTime" />
+
+                <label>Waktu Selesai:</label>
+                <input type="time" v-model="endTime" />
+
+                <div class="form-actions">
+                  <button class="btn confirm" @click="bookRoom(room.id)">Confirm</button>
+                  <button class="btn cancel" @click="cancelForm">Cancel</button>
+                </div>
+
+                <p v-if="errorMessage" class="error-msg">{{ errorMessage }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- Vue Script -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </div>
+</body>
+</html>
+

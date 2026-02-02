@@ -1,0 +1,179 @@
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nata Sans', sans-serif;
+  background-color: #d5deef;
+  color: #333;
+}
+
+/* Navbar */
+nav {
+  background-color: #b1c9ef;
+  display: flex;
+  justify-content: space-around;
+  width: auto;
+}
+
+nav li{
+    list-style-type: none;
+    display: inline;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  padding: 10px 15px 10px 15px;
+}
+
+nav a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #395886;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #1d3557;
+}
+
+/* Content */
+.content h2 {
+  text-align: center;
+  margin: 20px 0;
+  color: #2b2d42;
+}
+
+/* Booking Cards */
+.card-booking-room {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-room {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  background-color: #5c8cb3;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+}
+
+.card-room img {
+  border-radius: 10px;
+  width: 250px;
+  object-fit: cover;
+}
+
+/* Info */
+.information-1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.information-1 figcaption {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+/* Status */
+.status-box {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  align-self: flex-start;
+}
+
+.available {
+  background-color: #2ecc71;
+}
+
+.booked {
+  background-color: #7f8c8d;
+}
+
+/* Booking Form */
+.booking-form {
+  flex-basis: 100%;
+  margin-top: 15px;
+  padding: 15px;
+  background: #eef5ff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.booking-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.booking-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Buttons */
+.book-btn button,
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-btn button {
+  background-color: #27ae60;
+  color: white;
+}
+
+.book-btn button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.btn.confirm {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn.cancel {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Error Message */
+.error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+}
